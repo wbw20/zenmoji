@@ -1,0 +1,26 @@
+{
+  "name": "zenmoji",
+  "version": "0.0.0",
+  "authors": [
+    "William B. Wettersten <wwettersten@zendesk.com>"
+  ],
+  "description": "Simple jquery plugin to show an emoji picker",
+  "keywords": [
+    "emoji",
+    "zen",
+    "jquery",
+    "plugin",
+    "easy"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
