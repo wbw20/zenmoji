@@ -42,6 +42,7 @@
                    '</div>');
 
       this.$el.on('click', '.emojis td', options.select);
+      this.$el.on('selected', this.hide.bind(this));
       $('body').append(this.$el);
     }
 
@@ -71,11 +72,12 @@
       $el.data('view', new ZenmojiView({
         select: function(event) {
           var emoji    = $(event.target).text(),
-              text     = $el.text(),
+              text     = $el.val(),
               position = $el.caret('pos');
 
 
-          $el.val(text.slice(0, position) + emoji + text.slice(position));
+          $el.val(text.slice(0, position - 1) + emoji + text.slice(position));
+          $(event.target).trigger('selected');
         }
       }));
 
