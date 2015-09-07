@@ -27,7 +27,7 @@
       return template + '</tbody></table>';
     }
 
-    function ZenmojiView() {
+    function ZenmojiView(options) {
       this.$el = $('<div class="zenmoji-view" style="display: none;">' +
                      '<div class="content">' +
                        '<input type="text">' +
@@ -41,7 +41,7 @@
                      '</div>' +
                    '</div>');
 
-      this.$el.on('click', '.emojis', this.select.bind(this));
+      this.$el.on('click', '.emojis td', options.select);
       $('body').append(this.$el);
     }
 
@@ -58,10 +58,6 @@
       this.$el.hide();
     };
 
-    ZenmojiView.prototype.select = function(event) {
-      debugger
-    };
-
     function getToken(textarea, position) {
       var text = textarea.val().slice(0, position);
       var matches = /\:[A-Za-z]*$/.exec(text);
@@ -71,7 +67,17 @@
 
     this.each(function(index, el) {
       var $el = $(el);
-      $el.data('view', new ZenmojiView());
+
+      $el.data('view', new ZenmojiView({
+        select: function(event) {
+          var emoji    = $(event.target).text(),
+              text     = $el.text(),
+              position = $el.caret('pos');
+
+
+          $el.val(text.slice(0, position) + emoji + text.slice(position));
+        }
+      }));
 
       $el.on('keyup', function(event) {
         var view     = $(this).data('view'),
