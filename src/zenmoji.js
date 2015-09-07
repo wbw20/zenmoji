@@ -78,6 +78,8 @@
 
           $el.val(text.slice(0, position - 1) + emoji + text.slice(position));
           $(event.target).trigger('selected');
+          $el.focus();
+          $el.caret('pos', position);
         }
       }));
 
