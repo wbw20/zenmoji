@@ -4,4 +4,7 @@ textarea {
 
   width: 500px;
   min-height: 200px;
+
+  font-size: 12px;
+  line-height: 14px;
 }
