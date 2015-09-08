@@ -58,6 +58,7 @@
         top: offset.top + offset.height
       });
 
+      this.$el.scrollTop(25);
       this.$el.show();
     };
 
