@@ -58,8 +58,8 @@
         top: offset.top + offset.height
       });
 
-      this.$el.scrollTop(25);
       this.$el.show();
+      this.$el.scrollTop(25);
     };
 
     ZenmojiView.prototype.hide = function() {
