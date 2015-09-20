@@ -47,7 +47,14 @@
                      '</div>' +
                    '</div>');
 
+      /* If the top two handlers fire, the bottom does not */
       this.$el.on('click', '.emojis td', options.select);
+      this.$el.on('click', 'input', function(event) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      });
+      this.$el.on('click', this.hide.bind(this));
+
       this.$el.on('selected', this.hide.bind(this));
       $('body').append(this.$el);
     }
@@ -66,6 +73,10 @@
       this.$el.hide();
     };
 
+    ZenmojiView.prototype.isHovered = function() {
+      return this.$el.is(':hover');
+    };
+
     function getToken(textarea, position) {
       var text = textarea.val().slice(0, position);
       var matches = /\:[A-Za-z]*$/.exec(text);
@@ -82,11 +93,13 @@
               text     = $el.val(),
               position = $el.caret('pos');
 
-
           $el.val(text.slice(0, position - 1) + emoji + text.slice(position));
           $(event.target).trigger('selected');
           $el.focus();
           $el.caret('pos', position);
+
+          event.preventDefault();
+          event.stopImmediatePropagation();
         }
       }));
 
@@ -100,6 +113,14 @@
           view.hide();
         } else {
           view.show(offset);
+        }
+      });
+
+      $el.on('blur', function() {
+        var view = $(this).data('view');
+
+        if (!view.isHovered()) {
+          view.hide();
         }
       });
     });
