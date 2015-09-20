@@ -22,7 +22,11 @@
 }
 
 .zenmoji-view .content input {
-  width: ~calc("100% - 50px");
+  width: calc(100% - 30px);
+  height: 14px;
+  font-size: 10px;
+  padding: 2px 6px;
+
   border: none;
   border-radius: 3px;
 

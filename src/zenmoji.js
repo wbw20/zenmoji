@@ -66,7 +66,7 @@
       });
 
       this.$el.show();
-      this.$el.scrollTop(25);
+      this.$el.scrollTop(32);
     };
 
     ZenmojiView.prototype.hide = function() {

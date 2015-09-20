@@ -1,3 +1,7 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
 textarea {
   display: block;
   margin: 100px auto;
