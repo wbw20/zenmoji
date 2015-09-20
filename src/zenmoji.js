@@ -90,20 +90,16 @@
         }
       }));
 
-      $el.on('keyup', function(event) {
+      $el.on('keyup click', function(event) {
         var view     = $(this).data('view'),
             position = $(this).caret('pos'),
             offset   = $(this).caret('offset'),
             token    = getToken($(this), position);
 
-        if (event.which == keyMap.ESC) {
+        if (!token || event.which == keyMap.ESC) {
           view.hide();
         } else {
-          if (token) {
-            view.show(offset);
-          } else {
-            view.hide(offset);
-          }
+          view.show(offset);
         }
       });
     });
