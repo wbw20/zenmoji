@@ -102,12 +102,6 @@
           view.show(offset);
         }
       });
-
-      $el.on('focusout', function() {
-        var view = $(this).data('view')
-
-        view.hide();
-      });
     });
   }
 }());
